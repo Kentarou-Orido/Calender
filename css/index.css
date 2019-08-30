@@ -1,0 +1,78 @@
+article{
+    text-align:center;
+}
+
+.main__top{
+    height: 20%;
+    width: 100%;
+}
+.top-bar{
+    position: relative;
+    height: 20%;
+    width: 100%;
+}
+
+.main__bottom{
+    height: 80%;
+    width: 100%;
+}
+.triangle-left{
+    width: 0;
+    height: 0;
+    border-top: 60px solid transparent;
+    border-right: 60px solid black;
+    border-bottom: 60px solid transparent;
+    display: inline-block;
+    position: absolute;
+    top: 85%;
+    left: 26%;
+    right: 0;
+    bottom: 0;
+
+
+}
+h1{
+    display: inline-block;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 72px;
+}
+  .triangle-right{
+    width: 0;
+    height: 0;
+    border-left: 60px solid black;
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    display: inline-block;
+    position: absolute;
+    top: 85%;
+    left: 70%;
+    right: 0;
+    bottom: 0;
+}
+.calender{
+    margin: auto;
+    height: 95%;
+    width: 90%;
+}
+table{
+    border: 10px;
+    border-collapse: collapse;
+    border-color: black;
+}
+
+.calender__days-of-the-week {
+    height: 10%;
+}
+
+.calender__days-of-the-week th {
+    font-size: 60px;
+}
+
+.sunday {
+    text-align: left;
+    vertical-align: top;
+}
