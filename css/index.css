@@ -38,6 +38,7 @@ h1{
     right: 0;
     bottom: 0;
     font-size: 72px;
+    font-family: Comic Sans MS;
 }
 
   .triangle-right{
@@ -75,6 +76,9 @@ table{
 }
 
 td {
-    /* text-align: left; */
     vertical-align: top;
+    padding: 12px 0px 0px 12px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Comic Sans MS;
 }
