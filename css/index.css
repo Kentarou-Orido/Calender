@@ -28,9 +28,8 @@ article{
     left: 26%;
     right: 0;
     bottom: 0;
-
-
 }
+
 h1{
     display: inline-block;
     position: absolute;
@@ -40,6 +39,7 @@ h1{
     bottom: 0;
     font-size: 72px;
 }
+
   .triangle-right{
     width: 0;
     height: 0;
@@ -53,11 +53,13 @@ h1{
     right: 0;
     bottom: 0;
 }
+
 .calender{
     margin: auto;
     height: 95%;
     width: 90%;
 }
+
 table{
     border: 10px;
     border-collapse: collapse;
@@ -72,7 +74,7 @@ table{
     font-size: 60px;
 }
 
-.sunday {
-    text-align: left;
+td {
+    /* text-align: left; */
     vertical-align: top;
 }
