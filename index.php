@@ -31,15 +31,19 @@
                             <th class="saturday">土</th>
                         </tr>
                         <?php
+                            /**
+                             * ここではカレンダーを表記する際に
+                             * 月初日から月末日まで計算して出力するためのコードを入れています
+                             */
                         $y = date("Y");
                         $m = date("n");
                         $d = 1;
 
-                        $wd1 = date("w", mktime(0,0,0,$m,1,$y));
-                        for ($i = 1; $i <= $wd1; $i++){
+                        $wd1 = date("w", mktime(0, 0, 0, $m, 1, $y));
+                        for ($i = 1; $i <= $wd1; $i++) {
                             echo "<td> </td>";
                         }
-                        while(checkdate($m, $d, $y)){
+                        while (checkdate($m, $d, $y)) {
                             echo "<td>$d</td>";
                             if (date("w", mktime(0, 0, 0, $m, $d, $y)) == 6) {
                                 echo "</tr>";
@@ -47,7 +51,12 @@
                                     echo "<tr>";
                                 }
                             }
-                           $d++;
+                            $d++;
+                        }
+                        $last = date('t');
+                        $wdlast = date("w", mktime(0, 0, 0, $m, $last, $y));
+                        for ($i = 1; $wdlast < 6; $wdlast++) {
+                            echo "<td> </td>";
                         }
                         ?>
                     </table>
