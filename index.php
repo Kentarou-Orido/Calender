@@ -33,12 +33,42 @@ try {
             <div class="main">
                 <section class="main__top">
                     <div class= "top-bar">
-                        <div class="triangle-left"></div>
+                        <form action= "index.php" method= "get">
+                            <?php
+                            $y = isset($_GET["y"])? $_GET["y"] : date("Y");
+                            $m = isset($_GET["m"])? $_GET["m"] : date("m");
+                            if ($m == 1) {
+                                $nextyear = date("Y", mktime(0, 0, 0, $m, 1, $y-1));
+                            } else {
+                                $nextyear = isset($_GET["y"])? $_GET["y"] : date("Y");
+                            }
+                            $nextmonth = date("m", mktime(0, 0, 0, $m-1, 1, $y));
+                            echo"<a href='index.php?y={$nextyear}&m={$nextmonth}'>";
+                            ?>
+                                <div class="triangle-left"></div>
+                            </a>
+                        </form>
                         <?php
-                        $m = date("n");
-                        echo "<h1>{$m}月</h1>"
+                        $y = isset($_GET["y"])? $_GET["y"] : date("Y");
+                        $m = isset($_GET["m"])? $_GET["m"] : date("n");
+                        $m = sprintf('%01d', $m);
+                        echo "<h1>{$y}年  {$m}月</h1>";
                         ?>
-                        <div class="triangle-right"></div>
+                        <form action= "index.php" method= "get">
+                            <?php
+                            $y = isset($_GET["y"])? $_GET["y"] : date("Y");
+                            $m = isset($_GET["m"])? $_GET["m"] : date("m");
+                            if ($m == 12) {
+                                $nextyear = date("Y", mktime(0, 0, 0, $m, 1, $y+1));
+                            } else {
+                                $nextyear = isset($_GET["y"])? $_GET["y"] : date("Y");
+                            }
+                            $nextmonth = date("m", mktime(0, 0, 0, $m+01, 1, $y));
+                            echo"<a href='index.php?y={$nextyear}&m={$nextmonth}'>";
+                            ?>
+                                <div class="triangle-right"></div>
+                            </a>
+                        </form>
                     </div>
                 </section>
                 <section class="main__bottom">
@@ -53,18 +83,17 @@ try {
                             <th class="saturday">土</th>
                         </tr>
                         <?php
-                        require 'ChromePhp.php';
+                        include 'ChromePhp.php';
                             /**
                              * ここではカレンダーを表記する際に
                              * 月初日から月末日まで計算して出力するためのコードを入れています
                              */
-                        $y = date("Y");
-                        $m = date("n");
+                        $y = isset($_GET["y"])? $_GET["y"] : date("Y");
+                        $m = isset($_GET["m"])? $_GET["m"] : date("n");
                         $d = 1;
 
-                        $mm = date("m");
+                        $mm = isset($_GET["m"])? $_GET["m"] : date("m");
                         $dd = "01";
-
                         $wd1 = date("w", mktime(0, 0, 0, $m, 1, $y));
                         for ($i = 1; $i <= $wd1; $i++) {
                             echo "<td> </td>";
@@ -73,6 +102,8 @@ try {
                             $stmt = $pdo->query("SELECT * FROM holidays WHERE dating = '{$y}-{$m}-{$d}'");
                             $result = $stmt->fetch(PDO::FETCH_ASSOC);
                             $date = "{$y}-{$mm}-{$dd}";
+                            ChromePhp::log($date."date");
+                            ChromePhp::log($result['dating']."result");
                             if ("{$result['dating']}" == $date) {
                                 echo "<td class='holiday'>{$d}  {$result['name']}</td>";
                             } else {
@@ -86,6 +117,7 @@ try {
                             }
                             $d++;
                             $dd++;
+                            $dd = sprintf('%02d', $dd++);
                         }
                         $last = date('d', strtotime("{$y}-{$m} last day of this month"));
                         $wdlast = date("w", mktime(0, 0, 0, $m, $last, $y));

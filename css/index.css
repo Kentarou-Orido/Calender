@@ -34,7 +34,7 @@ h1{
     display: inline-block;
     position: absolute;
     top: 40px;
-    left: 0;
+    left: -30px;
     right: 0;
     bottom: 0;
     font-size: 72px;
@@ -75,6 +75,11 @@ table{
     font-size: 60px;
 }
 
+.calender .holiday td:last-of-type {
+    color: red;
+}
+
+
 .calender th:first-of-type {
 color: red;
 }
@@ -90,6 +95,7 @@ color: red;
 .calender td:last-of-type {
     color: blue;
 }
+
 
 td {
     vertical-align: top;
