@@ -53,7 +53,7 @@ try {
                             <th class="saturday">土</th>
                         </tr>
                         <?php
-                        include 'ChromePhp.php';
+                        require 'ChromePhp.php';
                             /**
                              * ここではカレンダーを表記する際に
                              * 月初日から月末日まで計算して出力するためのコードを入れています
@@ -63,7 +63,7 @@ try {
                         $d = 1;
 
                         $mm = date("m");
-                        $dd = 01;
+                        $dd = "01";
 
                         $wd1 = date("w", mktime(0, 0, 0, $m, 1, $y));
                         for ($i = 1; $i <= $wd1; $i++) {
@@ -87,9 +87,9 @@ try {
                             $d++;
                             $dd++;
                         }
-                        $last = date('t');
+                        $last = date('d', strtotime("{$y}-{$m} last day of this month"));
                         $wdlast = date("w", mktime(0, 0, 0, $m, $last, $y));
-                        for ($i = 1; $wdlast < 6; $wdlast++) {
+                        for ($wdlast; $wdlast < 6; $wdlast++) {
                             echo "<td> </td>";
                         }
                         ?>
