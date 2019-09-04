@@ -97,4 +97,10 @@ td {
     font-size: 18px;
     font-weight: bold;
     font-family: Comic Sans MS;
+    width: 10%;
+    height: 15%;
+}
+
+.holiday {
+    color: red;
 }
