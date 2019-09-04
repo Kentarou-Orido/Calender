@@ -83,7 +83,6 @@ try {
                             <th class="saturday">土</th>
                         </tr>
                         <?php
-                        include 'ChromePhp.php';
                             /**
                              * ここではカレンダーを表記する際に
                              * 月初日から月末日まで計算して出力するためのコードを入れています
@@ -102,10 +101,8 @@ try {
                             $stmt = $pdo->query("SELECT * FROM holidays WHERE dating = '{$y}-{$m}-{$d}'");
                             $result = $stmt->fetch(PDO::FETCH_ASSOC);
                             $date = "{$y}-{$mm}-{$dd}";
-                            ChromePhp::log($date."date");
-                            ChromePhp::log($result['dating']."result");
                             if ("{$result['dating']}" == $date) {
-                                echo "<td class='holiday'>{$d}  {$result['name']}</td>";
+                                echo "<td id='holiday'>{$d}  {$result['name']}</td>";
                             } else {
                                 echo "<td>{$d}</td>";
                             }
@@ -117,7 +114,7 @@ try {
                             }
                             $d++;
                             $dd++;
-                            $dd = sprintf('%02d', $dd++);
+                            $dd = sprintf('%02d', $dd);
                         }
                         $last = date('d', strtotime("{$y}-{$m} last day of this month"));
                         $wdlast = date("w", mktime(0, 0, 0, $m, $last, $y));
