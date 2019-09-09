@@ -6,8 +6,8 @@ try {
      */
 
     $pdo = new PDO(
-        'mysql:dbname=calender;host=localhost;charset=utf8',
-        'root',
+        'mysql:dbname=calender;host=192.168.1.237;charset=utf8',
+        'kentarou_test',
         '12345',
         [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -18,9 +18,7 @@ try {
     header('Content-Type: text/plain; charset=UTF-8', true, 500);
     exit($e->getMessage());
 }
-?>
-
-<html>
+?><html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,8 +49,9 @@ try {
                         <?php
                         $y = isset($_GET["y"])? $_GET["y"] : date("Y");
                         $m = isset($_GET["m"])? $_GET["m"] : date("n");
-                        $m = sprintf('%01d', $m);
-                        echo "<h1>{$y}年  {$m}月</h1>";
+                        //$m = sprintf('%01d', $m);
+                        //echo "<h1>{$y}年  {$m}月</h1>";
+                        echo '<h1>'.$y.'年  '.sprintf('%02d', $m).'月</h1>';
                         ?>
                         <form action= "index.php" method= "get">
                             <?php
